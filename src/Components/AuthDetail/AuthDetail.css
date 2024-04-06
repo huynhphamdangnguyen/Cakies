@@ -1,0 +1,9 @@
+.logout {
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 40px;
+    color: #fff;
+    background: #044ac3;
+    border-radius: 15px;
+}

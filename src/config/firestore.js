@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
-import {getAuth, initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-// import { getAnalytics } from "firebase/analytics";
+import {initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,7 +20,31 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth = getAuth(app); // Sử dụng ứng dụng đã được khởi tạo
+export const auth = getAuth(app); // Sử dụng ứng dụng đã được khởi tạo
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+
+// export  function LoginWithEmailPass(email, password) {
+//   try {
+//     console.log("email 1"  + email);
+//     console.log("password 1" + password);
+// signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Đăng nhập thành công
+//     const user = userCredential.user;
+//     console.log("Đăng nhập thành công với email:", user.email);
+//   })
+//   .catch((error) => {
+//     // Xử lý lỗi đăng nhập
+
+//     const errorMessage = error.message;
+//     console.error("Lỗi đăng nhập:", errorMessage);
+//   });
+//   } catch (e){
+//     console.log('Error', e);
+//     }
+// }
+
+// export function test(){
+//   console.log("Test");
+// }
