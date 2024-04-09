@@ -7,7 +7,6 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
 import { Login } from "../pages/Login/Login";
 import ProductList from "../Components/ProductList/ProductList";
-// import "./App.css";
 import { Register } from "../pages/Register/Register";
 import Cart from "../pages/Cart/Cart";
 

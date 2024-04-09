@@ -1,15 +1,13 @@
-import Header from '../Components/Header/Header'
-import Footer from '../Components/Footer/Footer'
 import {Outlet} from 'react-router-dom'
+import Sidenav from '../Components/Sidenav/Sidenav'
 
 const RootLayout = () => {
   return (
       <div className="app">
-        <Header />
+        <Sidenav />
         <main>
             <Outlet/>
         </main>
-        <Footer />
       </div>
     
   )
