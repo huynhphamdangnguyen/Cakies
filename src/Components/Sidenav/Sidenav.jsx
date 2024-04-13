@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { AiOutlineMenu, AiOutlineHome, AiOutlineLogin, AiOutlineUser, AiOutlineShoppingCart, AiOutlineContacts, AiOutlineComment } from 'react-icons/ai'
+import { AiOutlineMenu, AiOutlineHome, AiOutlineLogin, AiOutlineUser, AiOutlineShoppingCart, AiOutlineContacts, AiOutlineComment, AiOutlineInbox } from 'react-icons/ai'
 
 const Sidenav = () => {
     const [nav, setNav] = useState(false);
@@ -39,6 +39,9 @@ const Sidenav = () => {
                       <AiOutlineHome size={20}/>
                   </a>
                   <a href="/product" className='rounded-full shodow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
+                      <AiOutlineInbox size={20}/>
+                  </a>
+                  <a href="/cart" className='rounded-full shodow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
                       <AiOutlineShoppingCart size={20}/>
                   </a>
                   <a href="/login" className='rounded-full shodow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
