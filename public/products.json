@@ -1,0 +1,67 @@
+
+[
+    {
+        "id":1,
+        "title":"Absd",
+        "category": "Opera cake",
+        "price": 63000,
+        "image":"/images/cake1.jpg",
+        "status": "Best Selers"
+    },  
+    {
+        "id":2,
+        "title":"Bfsd",
+        "category": "Cheesecake",
+        "price": 130000,
+        "image":"/images/cake2.jpg",
+        "status": "Best Selers"
+    },
+    {
+        "id":3,
+        "title":"Cgas",
+        "category": "Cupcakes",
+        "price": 53000,
+        "image":"/images/cake3.jpg",
+        "status": "Best Selers"
+    },
+    {
+        "id":4,
+        "title":"Hhvs",
+        "category": "Opera cake",
+        "price": 63000,
+        "image":"/images/cake1.jpg",
+        "status": "Best Selers"
+    },  
+    {
+        "id":5,
+        "title":"Gkvi",
+        "category": "Cheesecake",
+        "price": 130000,
+        "image":"/images/cake2.jpg",
+        "status": "Best Selers"
+    },
+    {
+        "id":6,
+        "title":"Alzx",
+        "category": "Cupcakes",
+        "price": 53000,
+        "image":"/images/cake3.jpg",
+        "status": "Best Selers"
+    },
+    {
+        "id":7,
+        "title":"Olod",
+        "category": "Cupcakes",
+        "price": 53000,
+        "image":"/images/cake3.jpg",
+        "status": "Best Selers"
+    },
+    {
+        "id":8,
+        "title":"Xeua",
+        "category": "Cupcakes",
+        "price": 53000,
+        "image":"/images/cake3.jpg",
+        "status": "Best Selers"
+    }
+]
