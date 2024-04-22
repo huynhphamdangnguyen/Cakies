@@ -1,4 +1,3 @@
-import './Home.css'
 import cakeBackground from '../../Components/Asset/img3.jpg';
 import {TypeAnimation} from 'react-type-animation';
 import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';

@@ -1,35 +1,36 @@
 import { useEffect, useState } from 'react'
 import { FaFilter } from 'react-icons/fa'
 import Card from '../Card';
+import { supabase } from '../../config/supabaseClient'
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
-  // Fetching data from json file
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/products.json")
-        const data = await response.json();
-        setProducts(data)
-        setFilteredItems(data)
+        let { data, error } = await supabase
+          .from('products')
+          .select('*')
+        console.log("🚀 ~ fetchData ~ products:", data)
+        setProducts(data);
       } catch (error) {
         console.log("Error fetching data:", error)
       }
     }
     fetchData();
   }, [])
-
   //filter function
-  const filterItems = (category) => {
-    const filtered = category === "all" ? (products) : products.filter((item) => item.category === category);
 
-    setFilteredItems(filtered);
-    setSelectedCategory(category);
-  }
+  // const filterItems = (category) => {
+  //   const filtered = category === "all" ? (products) : products.filter((item) => item.category === category);
+
+  //   setFilteredItems(filtered);
+  //   setSelectedCategory(category);
+  // }
 
   //show all
   const showAll = () => {
@@ -37,7 +38,7 @@ const Products = () => {
     selectedCategory("all");
   }
 
-  //sorting function
+  // sorting function
   const handleSortChange = (option) => {
     setSortOption(option);
     console.log(option)
@@ -87,8 +88,8 @@ const Products = () => {
         </select>
         </div>
       </div>
-
-      <Card filteredItems={filteredItems} />
+        
+      <Card filteredItems={products} />
     </div>
   )
 }

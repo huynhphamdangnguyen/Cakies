@@ -4,33 +4,40 @@ import logo from "../../Components/Asset/logo.png";
 import { auth }  from "../../config/firestore";
 
 // import { LoginWithEmailPass } from "../../config/firestore"
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../config/supabaseClient";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const login = async (e) => {
     e.preventDefault();
-    const user = await signInWithEmailAndPassword(auth, email, password)
-    console.log(user)
-    if (user) {
-      navigate("/");
+    if (!isValidEmail(email)) {
+          setErrorMessage("Invalid email format");
+          return;
+          
     }
-    // .then((userCredential) => {
-    //   console.log(userCredential);
-    //   if (userCredential) {
-    //     return redirect("/")
-    //   }
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
+    if ( password =="") {
+        setErrorMessage("fail");
+        return;
+    }
+  try {
+            let { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            })
+            navigate('/');
+          } catch (error) {
+            alert(error)
+          }
   }  
-  
+    const isValidEmail = (e) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(e);
+      };
 
   return (
     <div className="flex min-h-full flex-col justify-center bg-transparent px-6 py-12 lg:px-8">
@@ -41,6 +48,8 @@ export const Login = () => {
         </h2>
       </div>
 
+      {errorMessage && <p>{errorMessage}</p>}
+      
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST" onSubmit={login}>
           <div>

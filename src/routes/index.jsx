@@ -11,6 +11,10 @@ import { Register } from "../pages/Register/Register";
 import Cart from "../pages/Cart/Cart";
 import Products from "../Components/ProductList/Products";
 import ProductDetail from "../Components/ProductList/ProductDetail";
+import Admin from "../pages/Admin";
+
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="products/:id" element={<ProductDetail />} />
       <Route path="productlist" element={<ProductList />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="admin" element={<Admin/>} />
     </Route>
   )
 );
