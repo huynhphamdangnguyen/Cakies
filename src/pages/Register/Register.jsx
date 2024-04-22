@@ -1,22 +1,41 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import logo from "../../Components/Asset/logo.png";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firestore"
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../config/supabaseClient";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(""); 
+
+  
   
   const signUp = async (e) => {
     e.preventDefault();
-    const signUp = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(signUp)
-    if (signUp) {
-      navigate("/login");
-    }
+    if (!isValidEmail(email)) {
+          setErrorMessage("Invalid email format");
+          return;
+          
+        }
+        if ( password =="") {
+            setErrorMessage("fail");
+            return;
+          }
+    console.log("ok")
+    try {
+        let { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+        })
+        console.log(data, error)
+      alert("check your email")
+       navigate("/login");
+      } catch (error) {
+        alert(error)
+      }
+
     // .then((userCredential) => {
     //   console.log(userCredential);
     // })
@@ -24,7 +43,10 @@ export const Register = () => {
     //   console.log(error);
     // })
   }
-
+  const isValidEmail = (e) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(e);
+      };
 
 
   return (
@@ -35,6 +57,8 @@ export const Register = () => {
           Sign up to your account
         </h2>
       </div>
+
+      {errorMessage && <p>{errorMessage}</p>}
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST" onSubmit={signUp}>

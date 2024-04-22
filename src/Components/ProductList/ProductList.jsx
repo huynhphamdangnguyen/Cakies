@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 
 const ProductList = () => {
 
-  const [images, setImages] = useState({
+  const images = {
     img1: "https://static.vecteezy.com/system/resources/previews/035/320/450/non_2x/ai-generated-cake-on-plate-isolated-on-transparent-background-png.png",
     img2: "https://static.vecteezy.com/system/resources/previews/021/162/361/non_2x/slice-of-white-chocolate-latte-cake-hand-drawn-png.png",
     img3: "https://static.vecteezy.com/system/resources/previews/018/749/630/non_2x/cake-delicious-3d-isolated-png.png",
     img4: "https://static.vecteezy.com/system/resources/previews/024/786/117/non_2x/pink-cake-with-strawberry-the-theme-of-food-and-dessert-isolated-object-transparent-background-ai-generated-free-png.png"
-  })
+  }
 
   const [activeImg, setActiveImage] = useState(images.img1)
 
