@@ -84,7 +84,7 @@ export default function Example() {
         </AccordionHeader>
         <AccordionBody>
           <div className="container mx-auto bg-gray-100 p-4 rounded-xl">
-            <h1 className="text-2xl font-bold mb-4 text-blue-600">
+            <h1 className="text-2xl font-bold mb-4 text-[#001b5e]">
               Add Product
             </h1>
             <form onSubmit={handleSubmit}>
@@ -157,10 +157,10 @@ export default function Example() {
               </div>
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="flex justify-center items-center gap-2 w-full py-3 px-4 bg-[#001b5e] text-white font-bold border border-[#001b5e] rounded-md ease-in-out duration-150 shadow-slate-600 hover:bg-white hover:text-[#001b5e] lg:m-0 md:px-6"
                 onClick={handleAddProduct}
               >
-                Add Product
+                Add New Product
               </button>
             </form>
           </div>

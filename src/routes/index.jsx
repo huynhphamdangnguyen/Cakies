@@ -6,7 +6,6 @@ import {
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
 import { Login } from "../pages/Login/Login";
-import ProductList from "../Components/ProductList/ProductList";
 import { Register } from "../pages/Register/Register";
 import Cart from "../pages/Cart/Cart";
 import Products from "../Components/ProductList/Products";
@@ -23,7 +22,6 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<ProductDetail />} />
-        <Route path="productlist" element={<ProductList />} />
         <Route path="cart" element={<Cart />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
