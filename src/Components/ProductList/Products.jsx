@@ -23,7 +23,7 @@ const Products = () => {
     }
     fetchData();
   }, [])
-  //filter function
+  // filter function
 
   // const filterItems = (category) => {
   //   const filtered = category === "all" ? (products) : products.filter((item) => item.category === category);

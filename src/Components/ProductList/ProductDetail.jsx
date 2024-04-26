@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addToCart } from '../../Counter/cartSlice';
 import { supabase } from '../../config/supabaseClient';
+import toast from 'react-hot-toast';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -15,13 +16,15 @@ const ProductDetail = () => {
     console.log("🚀 ~ ProductDetail ~ cartItems:", cartItems)
 
 
+
     const handleAddToCart = () => {
         dispatch(addToCart({
             id: products.id,
             title: products.title,
             price: products.price,
-            quantity: quantity
+            quantity: 1
         }))
+        toast(`${products.title} added to cart`)
     }
 
     useEffect(() => {
