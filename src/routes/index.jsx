@@ -13,6 +13,8 @@ import ProductDetail from "../Components/ProductList/ProductDetail";
 import AdminLayout from "../layouts/AdminLayout";
 import AdminProducts from "../pages/Admin/AdminProducts";
 import EditProduct from "../pages/Admin/EditProduct";
+import UserProfile from "../pages/Projife/UserProfile";
+import User from "../pages/Admin/User";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -20,6 +22,7 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="profile" element={<UserProfile />} />
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="cart" element={<Cart />} />
@@ -27,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="products" element={<AdminProducts />} />
         <Route path="products/:id" element={<EditProduct />} />
+        <Route path="Users" element={<User />} />
       </Route>
     </>
   )
