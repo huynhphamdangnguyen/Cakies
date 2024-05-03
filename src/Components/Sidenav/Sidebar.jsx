@@ -58,7 +58,7 @@
 
 // export default Sidebar
 
-import { AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -84,7 +84,6 @@ const Sidebar = () => {
         >
           <AiOutlineLogout />
         </Link>
-        {/* Add more links here */}
       </nav>
     </div>
   );
