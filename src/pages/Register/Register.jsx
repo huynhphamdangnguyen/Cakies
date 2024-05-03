@@ -8,33 +8,36 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(""); 
+  const [errorMessage, setErrorMessage] = useState("");
 
-  
-  
   const signUp = async (e) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
-          setErrorMessage("Invalid email format");
-          return;
-          
-        }
-        if ( password =="") {
-            setErrorMessage("fail");
-            return;
-          }
-    console.log("ok")
+      setErrorMessage("Invalid email format");
+      return;
+    }
+    if (password == "") {
+      setErrorMessage("fail");
+      return;
+    }
+    console.log("ok");
     try {
-        let { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-        })
-        console.log(data, error)
-      alert("check your email")
-       navigate("/login");
-      } catch (error) {
-        alert(error)
-      }
+      let { data, error } = await supabase.auth.signUp({
+        email: "canewitrotu-1189@yopmail.com",
+        password: "12345678",
+        options: {
+          data: {
+            role: "admin",
+          },
+        },
+      });
+      console.log(data);
+      console.log(data, error);
+      alert("check your email");
+      navigate("/login");
+    } catch (error) {
+      alert(error);
+    }
 
     // .then((userCredential) => {
     //   console.log(userCredential);
@@ -42,12 +45,11 @@ export const Register = () => {
     // .catch((error) => {
     //   console.log(error);
     // })
-  }
+  };
   const isValidEmail = (e) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(e);
-      };
-
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(e);
+  };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -77,7 +79,7 @@ export const Register = () => {
                 autoComplete="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -93,7 +95,7 @@ export const Register = () => {
                 Password
               </label>
             </div>
-            
+
             <div className="mt-2">
               <input
                 id="password"
@@ -101,15 +103,14 @@ export const Register = () => {
                 type="password"
                 autoComplete="current-password"
                 placeholder="Enter your password"
-                value={password} 
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-          <div>
-          </div>
+          <div></div>
           <div>
             <button
               type="submit"

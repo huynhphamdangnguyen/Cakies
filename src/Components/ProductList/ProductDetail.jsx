@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addToCart } from "../../Counter/cartSlice";
 import { supabase } from "../../config/supabaseClient";
 import toast from "react-hot-toast";
@@ -22,6 +22,7 @@ const ProductDetail = () => {
         name: products.name,
         price: products.price,
         quantity: quantity,
+        image: products.image,
       })
     );
 
@@ -52,9 +53,9 @@ const ProductDetail = () => {
           <a href="/" className="text-gray-600">
             Home
           </a>
-          <a href="/products" className="font-bold text-black">
+          <Link to="/products" className="font-bold text-black">
             /Products
-          </a>
+          </Link>
         </div>
         <div className="mt-2 sm:mt-10">
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-6 h-max">

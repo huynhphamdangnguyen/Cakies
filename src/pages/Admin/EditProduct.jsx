@@ -54,8 +54,6 @@ const EditProduct = () => {
     if (error) {
       console.error("Error updating product:", error);
     }
-    // if (data) {
-    //   alert("Product updated successfully");
     toast.success("Product updated successfully");
   }
 

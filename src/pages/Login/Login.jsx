@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import logo from "../../Components/Asset/logo.png";
-import { auth }  from "../../config/firestore";
+import { auth } from "../../config/firestore";
 
 // import { LoginWithEmailPass } from "../../config/firestore"
 import { useNavigate } from "react-router-dom";
@@ -16,28 +16,27 @@ export const Login = () => {
   const login = async (e) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
-          setErrorMessage("Invalid email format");
-          return;
-          
+      setErrorMessage("Invalid email format");
+      return;
     }
-    if ( password =="") {
-        setErrorMessage("fail");
-        return;
+    if (password == "") {
+      setErrorMessage("fail");
+      return;
     }
-  try {
-            let { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            })
-            navigate('/');
-          } catch (error) {
-            alert(error)
-          }
-  }  
-    const isValidEmail = (e) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(e);
-      };
+    try {
+      let { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
+  const isValidEmail = (e) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(e);
+  };
 
   return (
     <div className="flex min-h-full flex-col justify-center bg-transparent px-6 py-12 lg:px-8">
@@ -49,12 +48,12 @@ export const Login = () => {
       </div>
 
       {errorMessage && <p>{errorMessage}</p>}
-      
+
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST" onSubmit={login}>
           <div>
             <label
-              htmlFor="email" 
+              htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Email address
@@ -73,7 +72,6 @@ export const Login = () => {
               />
             </div>
           </div>
-
           <div>
             <div className="flex items-center justify-between">
               <label
@@ -83,11 +81,9 @@ export const Login = () => {
                 Password
               </label>
               <div className="text-sm">
-              <button
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          >
-            Forgot password?
-          </button>
+                <button className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                  Forgot password?
+                </button>
               </div>
             </div>
             <div className="mt-2">
@@ -118,13 +114,11 @@ export const Login = () => {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Don't have account?
-          <button
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          >
+          <button className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
             <a href="/register">Click Here!</a>
           </button>
         </p>
       </div>
     </div>
   );
-  };
+};

@@ -11,10 +11,9 @@ import toast from "react-hot-toast";
 export default function Example() {
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(0);
-  const [editingProduct, setEditingProduct] = useState("");
-
+  const [file, setFile] = useState(null);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
-
+  const [getRequest, setGetRequest] = useState(0);
   useEffect(() => {
     (async () => {
       let { data: products, error } = await supabase
@@ -23,7 +22,7 @@ export default function Example() {
       console.log(products);
       setProducts(products);
     })();
-  }, []);
+  }, [getRequest]);
 
   const handleDelete = async (id) => {
     try {
@@ -45,9 +44,7 @@ export default function Example() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic here to handle the submission of the product data
     console.log(product);
-    // Reset the form
     setProduct({
       name: "",
       price: "",
@@ -63,10 +60,14 @@ export default function Example() {
         price: product.price,
         category: product.category,
         description: product.description,
-        image: product.image,
+        image:
+          "https://yufglqdaueconkaetoki.supabase.co/storage/v1/object/public/product/" +
+          file.name,
       },
     ]);
     toast.success("Product added successfully");
+    setOpen(0);
+    setGetRequest(getRequest + 1);
   };
 
   const handleChange = (e) => {
@@ -75,7 +76,14 @@ export default function Example() {
       [e.target.name]: e.target.value,
     });
   };
-
+  const handleImg = async (e) => {
+    const saveFile = e.target.files[0];
+    setFile(saveFile);
+    const { data, error } = await supabase.storage
+      .from("product")
+      .upload(saveFile.name, saveFile);
+    console.log(data, error);
+  };
   return (
     <>
       <Accordion open={open === 1}>
@@ -138,6 +146,29 @@ export default function Example() {
                   className="border border-gray-300 rounded-md p-2 w-full"
                   required
                 />
+              </div>
+              <div className="mb-4">
+                <>
+                  <label
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="file_input"
+                  >
+                    Upload file
+                  </label>
+                  <input
+                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    aria-describedby="file_input_help"
+                    id="file_input"
+                    type="file"
+                    onChange={handleImg}
+                  />
+                  <p
+                    className="mt-1 text-sm text-gray-500 dark:text-gray-300"
+                    id="file_input_help"
+                  >
+                    SVG, PNG, JPG or GIF (MAX. 800x400px).
+                  </p>
+                </>
               </div>
               <div className="mb-4">
                 <label
